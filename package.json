@@ -7,9 +7,11 @@
   ],
   "private": "true",
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "chalk": "^4.1.2",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3"
   },
   "scripts": {
-    "dev": "concurrently --kill-others-on-fail 'yarn workspace @np/next-client dev' 'yarn workspace @np/rest-server dev'"
+    "dev": "cross-env SERVER_PORT=8000 concurrently --kill-others-on-fail 'yarn workspace @np/next-client dev' 'yarn workspace @np/rest-server dev'"
   }
 }

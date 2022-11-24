@@ -1,7 +1,12 @@
 const http = require("http");
+const chalk = require("chalk");
+
+const port = process.env.SERVER_PORT;
 
 const server = http.createServer((req, res) => {
   res.end("Hello");
 });
 
-server.listen(8000, () => console.log("Server is on port 8000"));
+server.listen(port, () =>
+  console.log(`${chalk.green("[Rest-Server]:")} is on port ${port}`)
+);

@@ -16,7 +16,8 @@
     "incremental": true,
     "paths": {
       "@components/*": ["./app/components/*"],
-      "@custom-types/*": ["./app/custom-types/*"]
+      "@custom-types/*": ["./app/custom-types/*"],
+      "@styles/*": ["./styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

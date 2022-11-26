@@ -1,12 +1,13 @@
-import { FC } from "react";
 import { LayoutBase } from "@components/layout/LayoutBase";
+import { Header } from "@components/layout/Header";
 
-const Button: FC<{ text: string }> = ({ text }) => {
-  return <>{text}</>;
-};
-
-const Home: FC = () => {
-  return <LayoutBase as={Button} text="test" />;
+const Home = () => {
+  return (
+    <>
+      <Header />
+      <LayoutBase>Hello, World!</LayoutBase>
+    </>
+  );
 };
 
 export default Home;

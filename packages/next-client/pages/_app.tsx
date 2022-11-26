@@ -1,9 +1,22 @@
 import { FC } from "react";
-import type { AppProps } from "next/app";
-import "../styles/reset.scss";
+import { AppProps as NextAppProps } from "next/app";
+import { GetLayout } from "@custom-types/component";
+import "@styles/reset.scss";
+import "@styles/fonts.scss";
+import "@styles/global.scss";
+
+type AppProps = NextAppProps & {
+  Component: NextAppProps["Component"] & {
+    getLayout?: GetLayout;
+  };
+};
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
+  const getLayout = Component.getLayout || ((page: any) => page);
+
+  return getLayout({
+    page: <Component {...pageProps} />
+  });
 };
 
 export default App;

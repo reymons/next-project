@@ -4,7 +4,7 @@ export type LayoutFC<P = {}> = FC<P> & {
   getLayout: () => ReactNode;
 };
 
-export type ChidlrenFC<P = {}, C = ReactNode> = FC<
+export type ChildrenFC<P = {}, C = ReactNode> = FC<
   P & {
     children: C;
   }

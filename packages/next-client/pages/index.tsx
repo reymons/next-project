@@ -1,5 +1,3 @@
-const Home = () => {
-  return <div>Hello, World!</div>;
-};
+import { Home } from "@components/screens/Home";
 
 export default Home;

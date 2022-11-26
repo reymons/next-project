@@ -12,6 +12,10 @@
     "cross-env": "^7.0.3"
   },
   "scripts": {
-    "dev": "cross-env SERVER_PORT=8000 concurrently --kill-others-on-fail 'yarn workspace @np/next-client dev' 'yarn workspace @np/rest-server dev'"
+    "dev": "cross-env SERVER_PORT=8000 concurrently --kill-others-on-fail 'yarn workspace @np/next-client dev' 'yarn workspace @np/rest-server dev'",
+    "prod": "cross-env SERVER_PORT=8000 concurrently --kill-others-on-fail 'yarn workspace @np/next-client prod' 'yarn workspace @np/rest-server dev'"
+  },
+  "engines": {
+    "node": "16.15.*"
   }
 }

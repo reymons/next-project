@@ -1,7 +1,7 @@
-import { LayoutBase } from "../LayoutBase";
+import LayoutBase from "../LayoutBase";
 import Nav from "./Nav";
 import Logo from "svg/logo.svg";
-import sl from "./Head.module.scss";
+import sl from "./index.module.scss";
 
 const Header = () => {
   return (

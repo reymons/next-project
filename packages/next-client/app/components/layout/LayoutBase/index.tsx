@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import cn from "classnames";
 import { AsFC } from "@custom-types/as.d";
-import sl from "./LayoutBase.module.scss";
+import sl from "./index.module.scss";
 
 type Props = {
   children: ReactNode;

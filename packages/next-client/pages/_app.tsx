@@ -12,7 +12,7 @@ type AppProps = NextAppProps & {
 };
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  const getLayout = Component.getLayout || ((page: any) => page);
+  const getLayout = Component.getLayout || (({ page }: any) => page);
 
   return getLayout({
     page: <Component {...pageProps} />

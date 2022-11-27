@@ -17,7 +17,9 @@
     "paths": {
       "@components/*": ["./app/components/*"],
       "@custom-types/*": ["./app/custom-types/*"],
-      "@styles/*": ["./styles/*"]
+      "@styles/*": ["./styles/*"],
+      "@dictionaries/*": ["./app/dictionaries/*"],
+      "@utils/*": ["./app/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

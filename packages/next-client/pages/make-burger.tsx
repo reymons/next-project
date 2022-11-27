@@ -1,3 +1,3 @@
-import { MakeBurger } from "@components/screens/MakeBurger";
+import MakeBurger from "@components/screens/MakeBurger";
 
 export default MakeBurger;

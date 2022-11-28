@@ -19,8 +19,11 @@
       "@custom-types/*": ["./app/custom-types/*"],
       "@styles/*": ["./styles/*"],
       "@dictionaries/*": ["./app/dictionaries/*"],
-      "@utils/*": ["./app/utils/*"]
-    }
+      "@utils/*": ["./app/utils/*"],
+      "@hooks/*": ["./app/hooks/*"],
+      "@mobx": ["./app/mobx/index.ts"]
+    },
+    "experimentalDecorators": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

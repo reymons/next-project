@@ -21,6 +21,7 @@
       "@dictionaries/*": ["./app/dictionaries/*"],
       "@utils/*": ["./app/utils/*"],
       "@hooks/*": ["./app/hooks/*"],
+      "@mobx/*": ["./app/mobx/*"],
       "@mobx": ["./app/mobx/index.ts"]
     },
     "experimentalDecorators": true

@@ -1,19 +1,24 @@
-import { action, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import Store from "../di";
 
 class CounterStore extends Store {
-  @observable private _count = 0;
+  count = 0;
 
-  get count() {
-    return this._count;
+  constructor() {
+    super();
+    makeObservable(this, {
+      count: observable,
+      increment: action.bound,
+      decrement: action.bound
+    });
   }
 
-  @action increment() {
-    this._count++;
+  increment() {
+    this.count++;
   }
 
-  @action decrement() {
-    this._count--;
+  decrement() {
+    this.count--;
   }
 }
 

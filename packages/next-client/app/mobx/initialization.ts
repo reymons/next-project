@@ -2,28 +2,29 @@ import { enableStaticRendering } from "mobx-react-lite";
 import { InjectRootMethod } from "./di";
 import CounterStore from "./stores/counter-store";
 
-enableStaticRendering(typeof window === "undefined");
+export type RootStore = ReturnType<typeof getStoreInstances>;
 
-let isInitialized = false;
+const isServer = typeof window === "undefined";
 
-function createRootStore() {
-  if (isInitialized) {
-    throw new Error("RootStore has already been initialized!");
-  }
+let rootStore: RootStore;
 
-  const rootStore = {
+enableStaticRendering(isServer);
+
+function getStoreInstances() {
+  return {
     counterStore: new CounterStore()
   };
+}
 
+function injectData(rootStore: RootStore) {
   Object.values(rootStore).forEach(store => {
     store[InjectRootMethod](rootStore);
   });
-
-  isInitialized = true;
-
-  return rootStore;
 }
 
-type RootStore = ReturnType<typeof createRootStore>;
-
-export { createRootStore, type RootStore };
+export function createRootStore() {
+  if (rootStore && !isServer) return rootStore;
+  rootStore = getStoreInstances();
+  injectData(rootStore);
+  return rootStore;
+}

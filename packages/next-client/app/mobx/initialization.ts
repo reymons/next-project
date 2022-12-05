@@ -1,5 +1,4 @@
 import { enableStaticRendering } from "mobx-react-lite";
-import { InjectRootMethod } from "./di";
 import CounterStore from "./stores/counter-store";
 
 export type RootStore = ReturnType<typeof getStoreInstances>;
@@ -16,9 +15,12 @@ function getStoreInstances() {
   };
 }
 
-function injectData(rootStore: RootStore) {
+export function injectData(rootStore: RootStore) {
   Object.values(rootStore).forEach(store => {
-    store[InjectRootMethod](rootStore);
+    if ("global" in store) {
+      // @ts-ignore
+      store.global = rootStore;
+    }
   });
 }
 

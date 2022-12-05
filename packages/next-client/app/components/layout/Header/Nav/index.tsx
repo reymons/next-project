@@ -1,16 +1,16 @@
-import Link from "next/link";
 import Router from "next/router";
 import { RefCallback, useLayoutEffect, useRef } from "react";
 import { links } from "./links";
-import sl from "./index.module.scss";
+import { NavStyled, Item, List, MovingLine, Link } from "./index.styles";
+import WindowResize from "@lib/window-resize";
 
 const Nav = () => {
-  const linksRef = useRef<Record<string, HTMLLIElement>>({});
+  const itemsRef = useRef<Record<string, HTMLLIElement>>({});
   const movingLineRef = useRef<HTMLDivElement>(null);
 
   const handleRef: RefCallback<HTMLLIElement> = node => {
     if (node) {
-      linksRef.current[node.dataset.route as string] = node;
+      itemsRef.current[node.dataset.route as string] = node;
     }
   };
 
@@ -18,10 +18,10 @@ const Nav = () => {
     if (!movingLineRef.current) return;
     const movingLine = movingLineRef.current;
     const moveLine = (newRoute: string) => {
-      const routes = Object.keys(linksRef.current);
+      const routes = Object.keys(itemsRef.current);
       for (const route of routes) {
         if (newRoute === route) {
-          const { offsetLeft, clientWidth } = linksRef.current[route];
+          const { offsetLeft, clientWidth } = itemsRef.current[route];
           movingLine.style.left = offsetLeft + "px";
           movingLine.style.width = clientWidth + "px";
           break;
@@ -30,30 +30,26 @@ const Nav = () => {
     };
     moveLine(Router.pathname);
     const handleRoute = (route: string) => moveLine(route);
+    const handleResize = () => moveLine(Router.pathname);
     Router.events.on("routeChangeComplete", handleRoute);
+    WindowResize.addListener(handleResize);
     return () => {
       Router.events.off("routeChangeComplete", handleRoute);
+      WindowResize.removeListener(handleResize);
     };
   }, []);
 
   return (
-    <nav className={sl.nav}>
-      <ul className={sl.list}>
+    <NavStyled>
+      <List>
         {links.map(link => (
-          <li
-            className={sl.linkItem}
-            key={link.href}
-            data-route={link.href}
-            ref={handleRef}
-          >
-            <Link className={sl.link} href={link.href}>
-              {link.text}
-            </Link>
-          </li>
+          <Item key={link.href} data-route={link.href} ref={handleRef}>
+            <Link href={link.href}>{link.text}</Link>
+          </Item>
         ))}
-      </ul>
-      <div className={sl.movingLine} ref={movingLineRef} />
-    </nav>
+      </List>
+      <MovingLine ref={movingLineRef} />
+    </NavStyled>
   );
 };
 

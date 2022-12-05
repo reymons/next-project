@@ -7,11 +7,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
-  sassOptions: {
-    additionalData: `
-      @import "@styles/sizes.scss";
-    `
-  },
   images: {
     formats: ["image/avif", "image/webp"]
   },

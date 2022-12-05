@@ -17,12 +17,11 @@
     "paths": {
       "@components/*": ["./app/components/*"],
       "@custom-types/*": ["./app/custom-types/*"],
-      "@styles/*": ["./styles/*"],
       "@dictionaries/*": ["./app/dictionaries/*"],
-      "@utils/*": ["./app/utils/*"],
       "@hooks/*": ["./app/hooks/*"],
+      "@mobx": ["./app/mobx/index.ts"],
       "@mobx/*": ["./app/mobx/*"],
-      "@mobx": ["./app/mobx/index.ts"]
+      "@lib/*": ["./app/lib/*"]
     },
     "experimentalDecorators": true
   },

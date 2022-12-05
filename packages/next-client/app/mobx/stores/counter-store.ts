@@ -1,16 +1,12 @@
-import { action, makeObservable, observable } from "mobx";
-import Store from "../di";
+import { makeAutoObservable } from "mobx";
+import { RootStore } from "@mobx/initialization";
 
-class CounterStore extends Store {
+class CounterStore {
+  private global = {} as RootStore;
   count = 0;
 
   constructor() {
-    super();
-    makeObservable(this, {
-      count: observable,
-      increment: action.bound,
-      decrement: action.bound
-    });
+    makeAutoObservable(this, {}, { autoBind: true });
   }
 
   increment() {

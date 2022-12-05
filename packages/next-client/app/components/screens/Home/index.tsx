@@ -2,26 +2,18 @@ import { observer } from "mobx-react-lite";
 import LayoutBase from "@components/layout/LayoutBase";
 import Header from "@components/layout/Header";
 import { LayoutFC } from "@custom-types/component";
-import useTodos from "@mobx/cache/api/use-todos";
+import { useStore } from "@mobx";
 
 const Home: LayoutFC = () => {
-  const { todos, isLoading, error } = useTodos();
-
+  const { count, increment, decrement } = useStore().counterStore;
   return (
-    <>
-      <LayoutBase>Hello, World!</LayoutBase>
-      {isLoading ? (
-        <p>Loading todos...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : (
-        <ul>
-          {todos?.map((todo: any) => (
-            <li key={todo.id}>{todo.title}</li>
-          ))}
-        </ul>
-      )}
-    </>
+    <LayoutBase>
+      <div>Count: {count}</div>
+      <div>
+        <button onClick={increment}>+</button>
+        <button onClick={decrement}>-</button>
+      </div>
+    </LayoutBase>
   );
 };
 

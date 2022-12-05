@@ -1,18 +1,13 @@
 import { ReactNode } from "react";
-import cn from "classnames";
-import { AsFC } from "@custom-types/as.d";
-import sl from "./index.module.scss";
+import { ChildrenFC } from "@custom-types/component";
+import { LayoutBaseStyled } from "./index.styles";
 
 type Props = {
   children: ReactNode;
 };
 
-const LayoutBase: AsFC<Props> = ({ as: As = "div", children, ...rest }) => {
-  return (
-    <As {...rest} className={cn(sl.layout, rest.className)}>
-      {children}
-    </As>
-  );
+const LayoutBase: ChildrenFC<Props> = ({ children }) => {
+  return <LayoutBaseStyled>{children}</LayoutBaseStyled>;
 };
 
 export default LayoutBase;

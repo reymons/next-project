@@ -1,14 +1,13 @@
-import LayoutBase from "../LayoutBase";
 import Nav from "./Nav";
 import Logo from "svg/logo.svg";
-import sl from "./index.module.scss";
+import { HeaderStyled } from "./index.styles";
 
 const Header = () => {
   return (
-    <LayoutBase className={sl.header} as="header">
+    <HeaderStyled>
       <Logo />
       <Nav />
-    </LayoutBase>
+    </HeaderStyled>
   );
 };
 

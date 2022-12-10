@@ -2,6 +2,7 @@ import { FC } from "react";
 import { AppProps as NextAppProps } from "next/app";
 import { GetLayout } from "@custom-types/component";
 import { StoreProvider } from "@mobx";
+import { ThemeProvider } from "@contexts";
 import CacheProvider from "@mobx/cache/context";
 import Styles from "@components/styles/Styles";
 
@@ -19,9 +20,11 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <Styles />
       <StoreProvider>
         <CacheProvider>
-          {getLayout({
-            page: <Component {...pageProps} />
-          })}
+          <ThemeProvider>
+            {getLayout({
+              page: <Component {...pageProps} />
+            })}
+          </ThemeProvider>
         </CacheProvider>
       </StoreProvider>
     </>

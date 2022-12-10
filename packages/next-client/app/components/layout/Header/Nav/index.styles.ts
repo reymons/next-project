@@ -22,6 +22,7 @@ export const Item = styled.li`
 export const Link = styled(NextLink)`
   padding: 12px 0;
   display: inline-block;
+  color: ${props => props.theme.color.secondary};
 `;
 
 export const MovingLine = styled.div`

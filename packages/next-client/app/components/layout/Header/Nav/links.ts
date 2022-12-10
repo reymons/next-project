@@ -10,6 +10,6 @@ export const links: Array<{
   },
   {
     href: MAKE_BURGER_ROUTE,
-    text: "Make burger"
+    text: "Make Your Burger"
   }
 ];

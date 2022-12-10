@@ -1,13 +1,8 @@
-import { ReactNode } from "react";
 import { ChildrenFC } from "@custom-types/component";
-import { LayoutBaseStyled } from "./index.styles";
+import { LayoutBaseStyled, StyledProps } from "./index.styles";
 
-type Props = {
-  children: ReactNode;
-};
-
-const LayoutBase: ChildrenFC<Props> = ({ children }) => {
-  return <LayoutBaseStyled>{children}</LayoutBaseStyled>;
+const LayoutBase: ChildrenFC<StyledProps> = ({ children, flexGrow }) => {
+  return <LayoutBaseStyled flexGrow={flexGrow}>{children}</LayoutBaseStyled>;
 };
 
 export default LayoutBase;

@@ -7,7 +7,11 @@ import Document, {
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
-const preloadedFonts = ["/fonts/OpenSans/OpenSans-Regular.woff2"];
+const preloadedFonts = [
+  "/fonts/OpenSans/OpenSans-Regular.woff2",
+  "/fonts/OpenSans/OpenSans-SemiBold.woff2",
+  "/fonts/OpenSans/OpenSans-Bold.woff2"
+];
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -46,6 +50,11 @@ class MyDocument extends Document {
           ))}
         </Head>
         <body>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `document.body.style.setProperty("--100vh", window.innerHeight + "px");`
+            }}
+          />
           <Main />
           <NextScript />
         </body>

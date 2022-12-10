@@ -1,28 +1,39 @@
 import { observer } from "mobx-react-lite";
-import LayoutBase from "@components/layout/LayoutBase";
 import Header from "@components/layout/Header";
 import { LayoutFC } from "@custom-types/component";
-import { useStore } from "@mobx";
+import Screen from "@components/layout/Screen";
+import { Container, Image, ImageWrapper, MakeBurgerLink } from "./index.styles";
+import Main from "@components/layout/Main";
+import ScreenMainText from "@components/shared/ScreenMainText";
+import Footer from "@components/layout/Footer";
+import { MAKE_BURGER_ROUTE } from "@dictionaries/routes";
 
 const Home: LayoutFC = () => {
-  const { count, increment, decrement } = useStore().counterStore;
   return (
-    <LayoutBase>
-      <div>Count: {count}</div>
-      <div>
-        <button onClick={increment}>+</button>
-        <button onClick={decrement}>-</button>
-      </div>
-    </LayoutBase>
+    <Container>
+      <ScreenMainText />
+      <ImageWrapper>
+        <MakeBurgerLink href={MAKE_BURGER_ROUTE}>
+          {"Make\nBurger"}
+        </MakeBurgerLink>
+        <Image
+          src="/images/big-burger.png"
+          alt="big-burger"
+          width={1000}
+          height={1000}
+        />
+      </ImageWrapper>
+    </Container>
   );
 };
 
 Home.getLayout = ({ page }) => {
   return (
-    <>
+    <Screen pageTitle="Home" fixedHeight adjustToHeader>
       <Header />
-      {page}
-    </>
+      <Main>{page}</Main>
+      <Footer />
+    </Screen>
   );
 };
 

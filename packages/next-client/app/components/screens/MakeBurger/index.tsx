@@ -1,5 +1,6 @@
 import Header from "@components/layout/Header";
 import LayoutBase from "@components/layout/LayoutBase";
+import Screen from "@components/layout/Screen";
 import { LayoutFC } from "@custom-types/component";
 
 const MakeBurger: LayoutFC = () => {
@@ -12,10 +13,10 @@ const MakeBurger: LayoutFC = () => {
 
 MakeBurger.getLayout = ({ page }) => {
   return (
-    <>
+    <Screen pageTitle="Make a burger">
       <Header />
       {page}
-    </>
+    </Screen>
   );
 };
 

@@ -21,7 +21,8 @@
       "@hooks/*": ["./app/hooks/*"],
       "@mobx": ["./app/mobx/index.ts"],
       "@mobx/*": ["./app/mobx/*"],
-      "@lib/*": ["./app/lib/*"]
+      "@lib/*": ["./app/lib/*"],
+      "@contexts": ["./app/contexts/index.ts"]
     },
     "experimentalDecorators": true
   },

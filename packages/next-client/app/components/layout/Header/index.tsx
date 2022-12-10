@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Nav from "./Nav";
 import Logo from "svg/logo.svg";
-import { useTheme } from "@contexts";
 import {
   ContactPseudoBtn,
   Contacts,
@@ -10,19 +10,14 @@ import {
   Phone,
   PhoneIcon
 } from "./index.styles";
-import Image from "next/image";
 
 const Header = () => {
-  const { toggleTheme } = useTheme();
   return (
     <HeaderStyled>
       <Layout>
         <Logo />
         <Nav />
         <Contacts>
-          <div style={{ marginRight: "60px" }} onClick={toggleTheme}>
-            Theme
-          </div>
           <ContactPseudoBtn>
             <PhoneIcon /> Call me back
           </ContactPseudoBtn>

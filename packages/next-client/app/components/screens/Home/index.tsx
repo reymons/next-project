@@ -21,6 +21,7 @@ const Home: LayoutFC = () => {
           alt="big-burger"
           width={1000}
           height={1000}
+          priority
         />
       </ImageWrapper>
     </Container>
